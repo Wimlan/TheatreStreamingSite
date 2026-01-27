@@ -1,0 +1,7 @@
+https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/
+
+https://vite.dev/guide/env-and-mode.html
+
+https://vite.dev/config/server-options.html
+
+https://vuejs.org/guide/typescript/options-api.html
