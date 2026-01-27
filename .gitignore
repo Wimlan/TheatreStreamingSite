@@ -3,4 +3,4 @@ dist
 dist-ssr
 .DS_Store
 node_modules
-.env.local
+.env
