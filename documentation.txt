@@ -5,3 +5,7 @@ https://vite.dev/guide/env-and-mode.html
 https://vite.dev/config/server-options.html
 
 https://vuejs.org/guide/typescript/options-api.html
+
+https://treblle.com/blog/api-parameters-query-path-header-body
+
+https://mattmaribojoc.medium.com/7-ways-to-write-better-vue-v-for-loops-321aef90b194
