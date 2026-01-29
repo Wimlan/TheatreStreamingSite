@@ -69,13 +69,16 @@ export default {
 <template>
   <section>
     <p v-if="error">{{ error }}</p>
+    <p v-else-if="shows.length === 0">Laddar föreställningar...</p>
     <div v-else>
       <ul v-for="show in limitedShows" :key="show.id">
-        <img width="200" :src="show.images[0].url" alt="" />
-        <li>{{ show.name }}</li>
-        <li>
-          {{ show.classifications[0].subGenre.name }}
-        </li>
+        <RouterLink :to="`show/${show.id}`">
+          <img width="200" :src="show.images[0].url" alt="" />
+          <li>{{ show.name }}</li>
+          <li>
+            {{ show.classifications[0].subGenre.name }}
+          </li>
+        </RouterLink>
       </ul>
     </div>
   </section>
