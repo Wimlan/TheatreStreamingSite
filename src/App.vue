@@ -1,23 +1,22 @@
 <!-- Att göra:
-*I theathrelist.vue: Gör props för hur många kort jag vill visa
-*I router.js: Lägg till specifik produkt när den klickas på -->
+*I theathrelist.vue:
+-Gör props för hur många kort jag vill visa
+-styla korten
+*I app:
+-Gör mobilmeny och lägga till logo och sökfunktion med v-model -->
 
 <script>
 import "/assets/style/index.css";
+import HeaderNavigation from "./components/HeaderNavigation.vue";
 
 export default {
-  components: {},
+  components: { HeaderNavigation },
 };
 </script>
 
 <template>
   <header>
-    <nav>
-      <ul>
-        <li><RouterLink to="/favorites">Favoriter</RouterLink></li>
-        <li><RouterLink to="/">Hem</RouterLink></li>
-      </ul>
-    </nav>
+    <HeaderNavigation />
   </header>
 
   <main><RouterView /></main>
