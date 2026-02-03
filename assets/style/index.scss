@@ -3,6 +3,16 @@
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
+$redDark: #6f1e37;
+$redMedium: #c92233;
+$blueDark: #000022;
+$blueMedium: #131330;
+$blueMediumLight: #302c44;
+$yellowAlmond: #f8e7d7;
+$yellowLight: #ecaf67;
+$yellowMedium: #e79a3d;
+$yellowMediumLight: #f4d8b8;
+
 *,
 *::before,
 *::after {
@@ -67,21 +77,88 @@ h6 {
   isolation: isolate;
 }
 
+body {
+  background-color: $blueDark;
+}
+
 // HEADER
+header {
+  background-color: $redDark;
+  color: $yellowAlmond;
+  position: relative;
+
+  input[name="search"] {
+    outline: none;
+    width: 90%;
+    border: none;
+    border-radius: 17px;
+    font-size: 1em;
+    color: $blueMediumLight;
+    background-color: $yellowMediumLight;
+    background-image: url("search.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 10px 5px;
+    padding: 0px 35px;
+    transition: 0.3s;
+  }
+  input[name="search"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $yellowMedium;
+  }
+}
 
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 24px;
 }
 
-#navmenu {
+#navbar {
   display: flex;
+  align-items: center;
+
+  button {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    text-align: inherit;
+    font: inherit;
+    border-radius: 0;
+    appearance: none;
+    cursor: pointer;
+  }
 }
 
 .hamburger {
+  width: 250px;
+  background-color: $redDark;
   position: absolute;
   z-index: 100;
+  top: 100%;
+  right: 0;
+  padding: 1rem;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 0.5em;
+      a {
+        text-decoration: none;
+        color: $yellowAlmond;
+        transition: text-shadow 0.3s;
+      }
+      a:hover {
+        text-shadow:
+          0 0 1px $yellowAlmond,
+          0 0 1px $yellowAlmond;
+        // text-decoration: underline;
+      }
+    }
+  }
 }
 
 // HOMEVIEW

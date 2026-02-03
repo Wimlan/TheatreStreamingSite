@@ -11,8 +11,16 @@ export default {
     };
   },
   computed: {
-    limitedShows() {
-      return this.shows.slice(0, 4);
+    displayedShows() {
+      if (this.searchQuery.trim() === "") {
+        return this.shows.slice(0, 4);
+      } else {
+        return this.shows.filter((show) =>
+          show.name
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase().trim()),
+        );
+      }
     },
   },
   created() {
@@ -62,6 +70,7 @@ export default {
   },
   props: {
     sortByKeyword: String,
+    searchQuery: { type: String, default: "" },
   },
 };
 </script>
@@ -71,7 +80,7 @@ export default {
     <p v-if="error">{{ error }}</p>
     <p v-else-if="shows.length === 0">Laddar föreställningar...</p>
     <div v-else>
-      <ul v-for="show in limitedShows" :key="show.id">
+      <ul v-for="show in displayedShows" :key="show.id">
         <RouterLink :to="`show/${show.id}`">
           <img width="200" :src="show.images[0].url" alt="" />
           <li>{{ show.name }}</li>

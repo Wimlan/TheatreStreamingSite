@@ -5,13 +5,17 @@ export default {
   components: {
     TheatreList,
   },
+  props: { globalSearch: String },
 };
 </script>
 
 <template>
-  <!-- Gör en props för hur många theathrelist kort jag vill visa -->
-  <TheatreList sortByKeyword="dance" />
-  <TheatreList sortByKeyword="musical" />
-  <TheatreList sortByKeyword="comedy" />
-  <TheatreList />
+  <div v-if="globalSearch.trim().length > 0">
+    Resultat för {{ globalSearch }}:<TheatreList :searchQuery="globalSearch" />
+  </div>
+  <div v-else>
+    <section><TheatreList sortByKeyword="dance" /></section>
+    <section><TheatreList sortByKeyword="musical" /></section>
+    <section><TheatreList sortByKeyword="comedy" /></section>
+  </div>
 </template>

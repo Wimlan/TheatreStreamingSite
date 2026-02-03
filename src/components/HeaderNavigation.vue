@@ -1,7 +1,13 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch, defineEmits } from "vue";
+import axios from "axios";
+
+const props = defineProps(["search"]);
+const emits = defineEmits(["update:search"]);
+
 const showMenu = ref(false);
 const toggleIcon = ref(true);
+const search = ref("");
 
 function toggleMenu() {
   showMenu.value = !showMenu.value;
@@ -13,35 +19,33 @@ function toggleMenu() {
   }
 }
 
-const search = ref("");
-
-const searchFilter = computed((p) => {
-  return p.name.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
+watch(search, (newValue) => {
+  emits("update:search", newValue);
 });
 </script>
 
 <template>
   <nav>
-    <img src="#" alt="logo" />
+    <img width="150px" src="/public/teaterbiblioteket-logo.png" alt="logo" />
 
-    <div id="navmenu">
+    <div id="navbar">
       <div>
-        <label v-model="search" for="searchbar">Sök</label>
-        <input type="text" placeholder="Sök efter namn" />
+        <input v-model="search" type="text" name="search" placeholder="SÖK" />
       </div>
 
-      <div>
+      <button @click="toggleMenu">
         <img
-          src=""
-          alt="Ikon för att öppna meny"
-          @click="toggleMenu"
-          v-if="toggleIcon"
+          height="30"
+          :src="toggleIcon ? '/public/more.png' : '/public/close.png'"
+          alt="Öppna och stäng meny"
         />
-        <img src="" alt="Stänga meny" @click="toggleMenu" v-else />
+      </button>
+      <!-- <img height="30" src="" alt="Stäng meny" @click="toggleMenu" v-else /> -->
 
-        <ul class="hamburger" v-if="showMenu">
-          <li><RouterLink to="/favorites">Favoriter</RouterLink></li>
-          <li><RouterLink to="/">Hem</RouterLink></li>
+      <div class="hamburger" v-if="showMenu">
+        <ul>
+          <li><RouterLink to="/">HEM</RouterLink></li>
+          <li><RouterLink to="/favorites">FAVORITER</RouterLink></li>
         </ul>
       </div>
     </div>
