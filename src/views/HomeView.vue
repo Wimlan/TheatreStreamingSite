@@ -13,9 +13,21 @@ export default {
   <div v-if="globalSearch.trim().length > 0">
     Resultat för {{ globalSearch }}:<TheatreList :searchQuery="globalSearch" />
   </div>
-  <div v-else>
-    <section><TheatreList sortByKeyword="dance" /></section>
-    <section><TheatreList sortByKeyword="musical" /></section>
-    <section><TheatreList sortByKeyword="comedy" /></section>
-  </div>
+  <article v-else id="show_article">
+    <section>
+      <TheatreList slicedNumber="4" />
+    </section>
+    <section>
+      <h2>Dance</h2>
+      <TheatreList sortByKeyword="classical" slicedNumber="4" />
+    </section>
+    <section>
+      <h2>Musical</h2>
+      <TheatreList sortByKeyword="musical" slicedNumber="4" />
+    </section>
+    <section>
+      <h2>Comedy</h2>
+      <TheatreList sortByKeyword="comedy" slicedNumber="4" />
+    </section>
+  </article>
 </template>

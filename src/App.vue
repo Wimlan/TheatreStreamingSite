@@ -38,5 +38,8 @@ export default {
     <a href="https://www.flaticon.com/free-icons/close" title="close icons"
       >Close icons created by ariefstudio - Flaticon</a
     >
+    <a href="https://www.flaticon.com/free-icons/video" title="video icons"
+      >Video icons created by Bingge Liu - Flaticon</a
+    >
   </footer>
 </template>

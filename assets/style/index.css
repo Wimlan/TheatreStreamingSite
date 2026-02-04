@@ -70,6 +70,11 @@ body {
   background-color: #000022;
 }
 
+main {
+  width: 80%;
+  margin: auto;
+}
+
 header {
   background-color: #6f1e37;
   color: #f8e7d7;
@@ -141,6 +146,56 @@ nav {
 }
 .hamburger ul li a:hover {
   text-shadow: 0 0 1px #f8e7d7, 0 0 1px #f8e7d7;
+}
+
+#show_article h2 {
+  color: #f8e7d7;
+}
+
+.show_genresection {
+  display: flex;
+  gap: 1em;
+}
+.show_genresection ul {
+  width: 300px;
+  height: 430px;
+  background-color: #f8e7d7;
+  padding: 0;
+  margin: 0;
+}
+.show_genresection ul a {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+  text-decoration: none;
+  height: 400px;
+  position: relative;
+}
+.show_genresection ul a li {
+  padding: 0;
+  margin: 0;
+}
+.show_genresection ul a .show_image {
+  align-self: center;
+}
+.show_genresection ul a .play_icon {
+  align-self: flex-end;
+  margin: 1em 1.5em 0 0;
+}
+.show_genresection ul a .description {
+  color: #000022;
+  position: absolute;
+  top: 47%;
+  margin-left: 1.5em;
+}
+.show_genresection ul a .description h3 {
+  width: 70%;
+}
+.show_genresection ul a .description p {
+  font-size: 15px;
+  width: 80%;
+  margin: 1em 0;
 }
 
 /*# sourceMappingURL=index.css.map */

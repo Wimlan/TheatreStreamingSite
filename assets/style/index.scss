@@ -81,6 +81,11 @@ body {
   background-color: $blueDark;
 }
 
+main {
+  width: 80%;
+  margin: auto;
+}
+
 // HEADER
 header {
   background-color: $redDark;
@@ -162,3 +167,59 @@ nav {
 }
 
 // HOMEVIEW
+
+//THEATRELIST
+#show_article {
+  h2 {
+    color: $yellowAlmond;
+  }
+}
+
+.show_genresection {
+  display: flex;
+  gap: 1em;
+
+  ul {
+    width: 300px;
+    height: 430px;
+    background-color: $yellowAlmond;
+    padding: 0;
+    margin: 0;
+
+    a {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      padding: 1em 0;
+      text-decoration: none;
+      height: 400px;
+      position: relative;
+      li {
+        padding: 0;
+        margin: 0;
+      }
+      .show_image {
+        align-self: center;
+      }
+      .play_icon {
+        align-self: flex-end;
+        margin: 1em 1.5em 0 0;
+      }
+
+      .description {
+        color: $blueDark;
+        position: absolute;
+        top: 47%;
+        margin-left: 1.5em;
+        h3 {
+          width: 70%;
+        }
+        p {
+          font-size: 15px;
+          width: 80%;
+          margin: 1em 0;
+        }
+      }
+    }
+  }
+}

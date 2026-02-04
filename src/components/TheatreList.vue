@@ -13,7 +13,7 @@ export default {
   computed: {
     displayedShows() {
       if (this.searchQuery.trim() === "") {
-        return this.shows.slice(0, 4);
+        return this.shows.slice(0, this.slicedNumber);
       } else {
         return this.shows.filter((show) =>
           show.name
@@ -71,6 +71,7 @@ export default {
   props: {
     sortByKeyword: String,
     searchQuery: { type: String, default: "" },
+    slicedNumber: { type: Number },
   },
 };
 </script>
@@ -79,13 +80,27 @@ export default {
   <section>
     <p v-if="error">{{ error }}</p>
     <p v-else-if="shows.length === 0">Laddar föreställningar...</p>
-    <div v-else>
+    <div v-else class="show_genresection">
       <ul v-for="show in displayedShows" :key="show.id">
         <RouterLink :to="`show/${show.id}`">
-          <img width="200" :src="show.images[0].url" alt="" />
-          <li>{{ show.name }}</li>
-          <li>
-            {{ show.classifications[0].subGenre.name }}
+          <li class="show_image">
+            <img
+              width="250"
+              height="150"
+              :src="show.images[0].url"
+              alt="show image"
+            />
+          </li>
+          <li class="play_icon">
+            <img width="40px" src="/public/play.png" alt="play ikon" />
+          </li>
+          <li class="description">
+            <h3>{{ show.name }}</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+              labore et non, incidunt praesentium amet, aperiam reprehenderit
+              accusamus omnis fugiat.
+            </p>
           </li>
         </RouterLink>
       </ul>
