@@ -1,5 +1,17 @@
 <script>
 export default {
+  data() {
+    return {
+      imgWidth: "18px",
+      favorited: false,
+    };
+  },
+  methods: {
+    addToFavorite() {
+      this.favorited = !this.favorited;
+      console.log(this.favorited);
+    },
+  },
   props: {
     typeOfButton: String,
   },
@@ -7,9 +19,23 @@ export default {
 </script>
 
 <template>
-  <button v-if="typeOfButton === 'play'" type="button">
-    <img src="/public/play(black).png" alt="" />SPELA UPP
+  <button class="play_button" v-if="typeOfButton === 'play'" type="button">
+    <img :width="imgWidth" src="/public/play(almond).png" alt="" />SPELA UPP
   </button>
-  <input v-else-if="typeOfButton === 'trailer'" type="button" value="TRAILER" />
-  <input v-else type="button" value="FAVORITER" />
+
+  <button
+    class="trailer_button"
+    v-else-if="typeOfButton === 'trailer'"
+    type="button"
+  >
+    <img :width="imgWidth" src="/public/play(black).png" alt="" />TRAILER
+  </button>
+
+  <button @click="addToFavorite" class="favorite_button" v-else type="button">
+    <img
+      :width="imgWidth"
+      :src="favorited ? '/public/star(marked).png' : '/public/star.png'"
+      alt=""
+    />FAVORITER
+  </button>
 </template>

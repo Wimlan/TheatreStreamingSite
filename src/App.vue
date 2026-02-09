@@ -41,5 +41,13 @@ export default {
     <a href="https://www.flaticon.com/free-icons/video" title="video icons"
       >Video icons created by Bingge Liu - Flaticon</a
     >
+    <a href="https://www.flaticon.com/free-icons/star" title="star icons"
+      >Star icons created by Pixel perfect - Flaticon</a
+    >
+    <a
+      href="https://www.flaticon.com/free-icons/bookmark"
+      title="bookmark icons"
+      >Bookmark icons created by Andrean Prabowo - Flaticon</a
+    >
   </footer>
 </template>

@@ -14,7 +14,18 @@ $yellowMedium: #e79a3d;
 $yellowMediumLight: #f4d8b8;
 
 @mixin button {
-  background-color: $redDark;
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-size: 0.8em;
+  border-radius: 5px;
+  padding: 0.7em 1.2em;
+  font-weight: 700;
 }
 
 *,
@@ -88,6 +99,31 @@ body {
 main {
   width: 80%;
   margin: auto;
+}
+
+.play_button {
+  background-color: $redDark;
+  color: $yellowAlmond;
+  border: solid 1px $yellowAlmond;
+}
+
+.favorite_button {
+  background-color: $yellowLight;
+  color: $blueDark;
+  border: solid 1px $blueDark;
+}
+
+.trailer_button {
+  background-color: $yellowLight;
+  color: $blueDark;
+  border: solid 1px $blueDark;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
 }
 
 // HEADER
@@ -164,7 +200,6 @@ nav {
         text-shadow:
           0 0 1px $yellowAlmond,
           0 0 1px $yellowAlmond;
-        // text-decoration: underline;
       }
     }
   }
@@ -182,7 +217,7 @@ nav {
 #main_banner {
   position: relative;
   margin: 1em 0;
-  img {
+  #main_image {
     width: 100%;
   }
   .title_box {
@@ -194,8 +229,8 @@ nav {
     top: 60%;
     right: 32%;
     padding: 2em;
-    input {
-      margin-top: 1em;
+    button {
+      @include button;
     }
   }
 }

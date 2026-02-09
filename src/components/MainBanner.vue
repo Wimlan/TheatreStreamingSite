@@ -41,9 +41,13 @@ export default {
   <section id="main_banner">
     <div class="title_box">
       <h2>{{ showName }}</h2>
-      <Buttons type-of-button="play" />
-      <Buttons />
+      <div class="button_container">
+        <RouterLink :to="`show/${showId}`">
+          <Buttons type-of-button="play" />
+        </RouterLink>
+        <Buttons />
+      </div>
     </div>
-    <img :src="showUrl" alt="show image" />
+    <img id="main_image" :src="showUrl" alt="show image" />
   </section>
 </template>
