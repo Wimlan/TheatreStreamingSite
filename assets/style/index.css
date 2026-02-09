@@ -66,6 +66,10 @@ h6 {
   isolation: isolate;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: #000022;
 }
@@ -81,10 +85,18 @@ main {
   border: solid 1px #f8e7d7;
 }
 
+.play_button:hover {
+  background-color: #c92233;
+}
+
 .favorite_button {
   background-color: #ecaf67;
   color: #000022;
   border: solid 1px #000022;
+}
+
+.favorite_button:hover {
+  background-color: #e79a3d;
 }
 
 .trailer_button {
@@ -193,7 +205,7 @@ nav {
   text-align: center;
   z-index: 100;
   top: 60%;
-  right: 32%;
+  right: 30%;
   padding: 2em;
 }
 #main_banner .title_box button {
@@ -275,6 +287,24 @@ nav {
 }
 .show_genresection ul:hover .play_icon_blue {
   display: block;
+}
+
+footer {
+  background-color: #6f1e37;
+  color: #f8e7d7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5em 10em;
+  margin-top: 2em;
+}
+footer a {
+  color: #f8e7d7;
+  text-decoration: underline;
+}
+
+#adress_section div {
+  margin-left: 5em;
 }
 
 /*# sourceMappingURL=index.css.map */

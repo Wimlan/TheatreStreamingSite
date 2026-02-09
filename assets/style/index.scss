@@ -92,6 +92,10 @@ h6 {
   isolation: isolate;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: $blueDark;
 }
@@ -106,11 +110,18 @@ main {
   color: $yellowAlmond;
   border: solid 1px $yellowAlmond;
 }
+.play_button:hover {
+  background-color: $redMedium;
+}
 
 .favorite_button {
   background-color: $yellowLight;
   color: $blueDark;
   border: solid 1px $blueDark;
+}
+
+.favorite_button:hover {
+  background-color: $yellowMedium;
 }
 
 .trailer_button {
@@ -227,7 +238,7 @@ nav {
     text-align: center;
     z-index: 100;
     top: 60%;
-    right: 32%;
+    right: 30%;
     padding: 2em;
     button {
       @include button;
@@ -304,5 +315,26 @@ nav {
     .play_icon_blue {
       display: block;
     }
+  }
+}
+
+//FOOTER
+footer {
+  background-color: $redDark;
+  color: $yellowAlmond;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5em 10em;
+  margin-top: 2em;
+  a {
+    color: $yellowAlmond;
+    text-decoration: underline;
+  }
+}
+
+#adress_section {
+  div {
+    margin-left: 5em;
   }
 }

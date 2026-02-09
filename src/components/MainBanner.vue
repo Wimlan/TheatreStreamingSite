@@ -32,6 +32,13 @@ export default {
       this.show = response.data._embedded?.events[0] || [];
       this.showUrl = this.show.images[9].url || "";
       this.showName = this.show.name || "";
+
+      if (!this.show) {
+        setTimeout(() => {
+          this.fetchMainShow();
+        }, 2000);
+        return;
+      }
     },
   },
 };
@@ -48,6 +55,12 @@ export default {
         <Buttons />
       </div>
     </div>
-    <img id="main_image" :src="showUrl" alt="show image" />
+    <img
+      width="1200px"
+      height="700px"
+      id="main_image"
+      :src="showUrl"
+      alt="show image"
+    />
   </section>
 </template>

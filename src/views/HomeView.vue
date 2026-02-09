@@ -24,15 +24,15 @@ export default {
       <TheatreList slicedNumber="4" />
     </section>
     <section>
-      <h2>Dance</h2>
+      <h2>Dans</h2>
       <TheatreList sortByKeyword="classical" slicedNumber="4" />
     </section>
     <section>
-      <h2>Musical</h2>
+      <h2>Musikal</h2>
       <TheatreList sortByKeyword="musical" slicedNumber="4" />
     </section>
     <section>
-      <h2>Comedy</h2>
+      <h2>Komedi</h2>
       <TheatreList sortByKeyword="comedy" slicedNumber="4" />
     </section>
   </article>

@@ -7,9 +7,10 @@
 <script>
 import "/assets/style/index.css";
 import HeaderNavigation from "./components/HeaderNavigation.vue";
+import FooterSection from "./components/FooterSection.vue";
 
 export default {
-  components: { HeaderNavigation },
+  components: { HeaderNavigation, FooterSection },
   data() {
     return {
       globalSearch: "",
@@ -25,29 +26,5 @@ export default {
 
   <main><RouterView :globalSearch="globalSearch" /></main>
 
-  <footer>
-    Licenses:
-    <a
-      href="https://www.flaticon.com/free-icons/hamburger"
-      title="hamburger icons"
-      >Hamburger icons created by feen - Flaticon</a
-    >
-    <a href="https://www.flaticon.com/free-icons/search" title="search icons"
-      >Search icons created by Catalin Fertu - Flaticon</a
-    >
-    <a href="https://www.flaticon.com/free-icons/close" title="close icons"
-      >Close icons created by ariefstudio - Flaticon</a
-    >
-    <a href="https://www.flaticon.com/free-icons/video" title="video icons"
-      >Video icons created by Bingge Liu - Flaticon</a
-    >
-    <a href="https://www.flaticon.com/free-icons/star" title="star icons"
-      >Star icons created by Pixel perfect - Flaticon</a
-    >
-    <a
-      href="https://www.flaticon.com/free-icons/bookmark"
-      title="bookmark icons"
-      >Bookmark icons created by Andrean Prabowo - Flaticon</a
-    >
-  </footer>
+  <footer><FooterSection /></footer>
 </template>
