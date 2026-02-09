@@ -13,6 +13,10 @@ $yellowLight: #ecaf67;
 $yellowMedium: #e79a3d;
 $yellowMediumLight: #f4d8b8;
 
+@mixin button {
+  background-color: $redDark;
+}
+
 *,
 *::before,
 *::after {
@@ -168,10 +172,40 @@ nav {
 
 // HOMEVIEW
 
+#site_intro {
+  color: $yellowAlmond;
+  text-align: center;
+  margin: 1em 0;
+}
+
+//MAINBANNER
+#main_banner {
+  position: relative;
+  margin: 1em 0;
+  img {
+    width: 100%;
+  }
+  .title_box {
+    color: $yellowAlmond;
+    background-color: rgba(0, 0, 34, 0.803);
+    position: absolute;
+    text-align: center;
+    z-index: 100;
+    top: 60%;
+    right: 32%;
+    padding: 2em;
+    input {
+      margin-top: 1em;
+    }
+  }
+}
+
 //THEATRELIST
 #show_article {
   h2 {
     color: $yellowAlmond;
+    margin: 1em 0 0.2em 0;
+    text-transform: uppercase;
   }
 }
 
@@ -205,6 +239,11 @@ nav {
         align-self: flex-end;
         margin: 1em 1.5em 0 0;
       }
+      .play_icon_blue {
+        display: none;
+        align-self: flex-end;
+        margin: 1em 1.5em 0 0;
+      }
 
       .description {
         color: $blueDark;
@@ -220,6 +259,15 @@ nav {
           margin: 1em 0;
         }
       }
+    }
+  }
+  ul:hover {
+    background-color: $yellowLight;
+    .play_icon {
+      display: none;
+    }
+    .play_icon_blue {
+      display: block;
     }
   }
 }

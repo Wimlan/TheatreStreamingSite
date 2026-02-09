@@ -1,15 +1,21 @@
 <script>
 import TheatreList from "../components/TheatreList.vue";
+import MainBanner from "../components/MainBanner.vue";
 
 export default {
   components: {
     TheatreList,
+    MainBanner,
   },
   props: { globalSearch: String },
 };
 </script>
 
 <template>
+  <h1 id="site_intro">DIN NÄSTA TEATERUPPLEVELSE</h1>
+
+  <MainBanner />
+
   <div v-if="globalSearch.trim().length > 0">
     Resultat för {{ globalSearch }}:<TheatreList :searchQuery="globalSearch" />
   </div>

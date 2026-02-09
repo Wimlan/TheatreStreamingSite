@@ -94,6 +94,9 @@ export default {
           <li class="play_icon">
             <img width="40px" src="/public/play.png" alt="play ikon" />
           </li>
+          <li class="play_icon_blue">
+            <img width="40px" src="/public/play(blue).png" alt="play ikon" />
+          </li>
           <li class="description">
             <h3>{{ show.name }}</h3>
             <p>

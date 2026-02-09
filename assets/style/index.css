@@ -148,8 +148,37 @@ nav {
   text-shadow: 0 0 1px #f8e7d7, 0 0 1px #f8e7d7;
 }
 
+#site_intro {
+  color: #f8e7d7;
+  text-align: center;
+  margin: 1em 0;
+}
+
+#main_banner {
+  position: relative;
+  margin: 1em 0;
+}
+#main_banner img {
+  width: 100%;
+}
+#main_banner .title_box {
+  color: #f8e7d7;
+  background-color: rgba(0, 0, 34, 0.803);
+  position: absolute;
+  text-align: center;
+  z-index: 100;
+  top: 60%;
+  right: 32%;
+  padding: 2em;
+}
+#main_banner .title_box input {
+  margin-top: 1em;
+}
+
 #show_article h2 {
   color: #f8e7d7;
+  margin: 1em 0 0.2em 0;
+  text-transform: uppercase;
 }
 
 .show_genresection {
@@ -183,6 +212,11 @@ nav {
   align-self: flex-end;
   margin: 1em 1.5em 0 0;
 }
+.show_genresection ul a .play_icon_blue {
+  display: none;
+  align-self: flex-end;
+  margin: 1em 1.5em 0 0;
+}
 .show_genresection ul a .description {
   color: #000022;
   position: absolute;
@@ -196,6 +230,15 @@ nav {
   font-size: 15px;
   width: 80%;
   margin: 1em 0;
+}
+.show_genresection ul:hover {
+  background-color: #ecaf67;
+}
+.show_genresection ul:hover .play_icon {
+  display: none;
+}
+.show_genresection ul:hover .play_icon_blue {
+  display: block;
 }
 
 /*# sourceMappingURL=index.css.map */
