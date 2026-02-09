@@ -89,6 +89,16 @@ main {
   background-color: #c92233;
 }
 
+.trailer_button {
+  background-color: #ecaf67;
+  color: #000022;
+  border: solid 1px #000022;
+}
+
+.trailer_button:hover {
+  background-color: #e79a3d;
+}
+
 .favorite_button {
   background-color: #ecaf67;
   color: #000022;
@@ -97,12 +107,6 @@ main {
 
 .favorite_button:hover {
   background-color: #e79a3d;
-}
-
-.trailer_button {
-  background-color: #ecaf67;
-  color: #000022;
-  border: solid 1px #000022;
 }
 
 .button_container {
@@ -205,7 +209,7 @@ nav {
   text-align: center;
   z-index: 100;
   top: 60%;
-  right: 30%;
+  right: 26%;
   padding: 2em;
 }
 #main_banner .title_box button {

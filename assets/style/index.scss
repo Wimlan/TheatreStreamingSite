@@ -114,6 +114,16 @@ main {
   background-color: $redMedium;
 }
 
+.trailer_button {
+  background-color: $yellowLight;
+  color: $blueDark;
+  border: solid 1px $blueDark;
+}
+
+.trailer_button:hover {
+  background-color: $yellowMedium;
+}
+
 .favorite_button {
   background-color: $yellowLight;
   color: $blueDark;
@@ -122,12 +132,6 @@ main {
 
 .favorite_button:hover {
   background-color: $yellowMedium;
-}
-
-.trailer_button {
-  background-color: $yellowLight;
-  color: $blueDark;
-  border: solid 1px $blueDark;
 }
 
 .button_container {
@@ -238,7 +242,7 @@ nav {
     text-align: center;
     z-index: 100;
     top: 60%;
-    right: 30%;
+    right: 26%;
     padding: 2em;
     button {
       @include button;

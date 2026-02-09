@@ -12,14 +12,13 @@ export default {
 </script>
 
 <template>
-  <h1 id="site_intro">DIN NÄSTA TEATERUPPLEVELSE</h1>
-
-  <MainBanner />
-
   <div v-if="globalSearch.trim().length > 0">
     Resultat för {{ globalSearch }}:<TheatreList :searchQuery="globalSearch" />
   </div>
   <article v-else id="show_article">
+    <h1 id="site_intro">DIN NÄSTA TEATERUPPLEVELSE</h1>
+
+    <MainBanner />
     <section>
       <TheatreList slicedNumber="4" />
     </section>
