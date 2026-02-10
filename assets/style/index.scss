@@ -14,6 +14,8 @@ $yellowMedium: #e79a3d;
 $yellowMediumLight: #f4d8b8;
 
 @mixin button {
+  min-width: 130px;
+  min-height: 40px;
   display: flex;
   gap: 0.5em;
   justify-content: center;
@@ -45,6 +47,7 @@ $yellowMediumLight: #f4d8b8;
 }
 
 body {
+  background-color: $blueDark;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -96,13 +99,12 @@ a {
   text-decoration: none;
 }
 
-body {
-  background-color: $blueDark;
-}
-
 main {
   width: 80%;
-  margin: auto;
+  margin: 5em auto;
+}
+button {
+  @include button;
 }
 
 .play_button {
@@ -141,12 +143,20 @@ main {
   gap: 1em;
 }
 
+.loading {
+  color: $yellowAlmond;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // HEADER
 header {
-  background-color: $redDark;
-  color: $yellowAlmond;
-  position: relative;
-
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 120;
   input[name="search"] {
     outline: none;
     width: 90%;
@@ -169,6 +179,9 @@ header {
 }
 
 nav {
+  background-color: $redDark;
+  color: $yellowAlmond;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -180,6 +193,7 @@ nav {
   align-items: center;
 
   button {
+    min-width: fit-content;
     background-color: transparent;
     border: none;
     margin: 0;
@@ -244,9 +258,6 @@ nav {
     top: 60%;
     right: 26%;
     padding: 2em;
-    button {
-      @include button;
-    }
   }
 }
 
@@ -260,11 +271,13 @@ nav {
 }
 
 .show_genresection {
-  display: flex;
   gap: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
 
   ul {
-    width: 300px;
+    max-width: 295px;
     height: 430px;
     background-color: $yellowAlmond;
     padding: 0;
@@ -340,5 +353,76 @@ footer {
 #adress_section {
   div {
     margin-left: 5em;
+  }
+}
+
+//DETAILED VIEW
+.back_icon {
+  margin-top: 6em;
+}
+
+#detailed_info {
+  color: $yellowAlmond;
+
+  .banner {
+    display: block;
+    margin: auto;
+  }
+
+  .bookmark {
+    display: block;
+    margin-left: auto;
+    margin-right: 10em;
+    cursor: pointer;
+  }
+
+  .flex_container {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 5em;
+    margin: 2em 0;
+  }
+
+  .show_description {
+    width: 50%;
+  }
+
+  .production_members {
+    height: 400px;
+    max-width: 300px;
+    border: solid 1px $yellowAlmond;
+    ul {
+      padding: 3em;
+      list-style: none;
+    }
+  }
+}
+
+//VIDEO
+
+.button_container {
+  justify-content: left;
+  margin-left: 7em;
+  margin-bottom: 2em;
+}
+
+#video_section {
+  position: fixed;
+  z-index: 130;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: inset 100vw 490px rgba(0, 0, 34, 0.897);
+  img {
+    display: block;
+    margin: 0 5em 0 auto;
+    cursor: pointer;
   }
 }

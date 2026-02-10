@@ -4,7 +4,7 @@ export default {};
 
 <template>
   <section id="adress_section">
-    <img width="200px" src="/public/teaterbiblioteket-logo.png" alt="" />
+    <img width="200px" src="/teaterbiblioteket-logo.png" alt="" />
     <div>
       <p>
         LÅTSASGATAN 12 <br />
@@ -54,6 +54,11 @@ export default {};
         href="https://www.flaticon.com/free-icons/bookmark"
         title="bookmark icons"
         >Bookmark icons created by Andrean Prabowo - Flaticon</a
+      >
+    </li>
+    <li>
+      <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons"
+        >Arrow icons created by bqlqn - Flaticon</a
       >
     </li>
   </ul>

@@ -20,7 +20,7 @@ export default {
 
 <template>
   <button class="play_button" v-if="typeOfButton === 'play'" type="button">
-    <img :width="imgWidth" src="/public/play(almond).png" alt="" />SPELA UPP
+    <img :width="imgWidth" src="/play(almond).png" alt="" />SPELA UPP
   </button>
 
   <button
@@ -28,14 +28,27 @@ export default {
     v-else-if="typeOfButton === 'trailer'"
     type="button"
   >
-    <img :width="imgWidth" src="/public/play(black).png" alt="" />TRAILER
+    <img :width="imgWidth" src="/play(black).png" alt="" />TRAILER
   </button>
 
-  <button @click="addToFavorite" class="favorite_button" v-else type="button">
+  <button
+    v-else-if="typeOfButton === 'favorite'"
+    @click="addToFavorite"
+    class="favorite_button"
+    type="button"
+  >
     <img
       :width="imgWidth"
-      :src="favorited ? '/public/star(marked).png' : '/public/star.png'"
+      :src="favorited ? '/star(marked).png' : '/star.png'"
       alt=""
     />FAVORITER
   </button>
+
+  <img
+    v-else-if="typeOfButton === 'bookmark'"
+    width="50px"
+    @click="addToFavorite"
+    :src="favorited ? '/bookmark(marked).png' : '/bookmark.png'"
+    alt="lägg till i din favoritlista"
+  />
 </template>

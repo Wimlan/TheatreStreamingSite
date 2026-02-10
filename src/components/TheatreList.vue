@@ -61,7 +61,7 @@ export default {
         this.shows = filteredShows.sort(() => Math.random() - 0.5);
         console.log(this.shows);
       } catch (err) {
-        this.error = "Kunde inte laddas. Försöker igen...";
+        this.error = "Kunde inte hittas. Försöker igen...";
         setTimeout(() => {
           this.getShows();
         }, 2000);
@@ -78,8 +78,10 @@ export default {
 
 <template>
   <section>
-    <p v-if="error">{{ error }}</p>
-    <p v-else-if="shows.length === 0">Laddar föreställningar...</p>
+    <p class="loading" v-if="error">{{ error }}</p>
+    <p v-else-if="shows.length === 0" class="loading">
+      Läser in föreställningar...
+    </p>
     <div v-else class="show_genresection">
       <ul v-for="show in displayedShows" :key="show.id">
         <RouterLink :to="`show/${show.id}`">
@@ -92,10 +94,10 @@ export default {
             />
           </li>
           <li class="play_icon">
-            <img width="40px" src="/public/play.png" alt="play ikon" />
+            <img width="40px" src="/play.png" alt="play ikon" />
           </li>
           <li class="play_icon_blue">
-            <img width="40px" src="/public/play(blue).png" alt="play ikon" />
+            <img width="40px" src="/play(blue).png" alt="play ikon" />
           </li>
           <li class="description">
             <h3>{{ show.name }}</h3>

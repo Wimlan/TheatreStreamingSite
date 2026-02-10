@@ -26,7 +26,7 @@ watch(search, (newValue) => {
 
 <template>
   <nav>
-    <img width="150px" src="/public/teaterbiblioteket-logo.png" alt="logo" />
+    <img width="150px" src="/teaterbiblioteket-logo.png" alt="logo" />
 
     <div id="navbar">
       <div>
@@ -36,7 +36,7 @@ watch(search, (newValue) => {
       <button @click="toggleMenu">
         <img
           height="30"
-          :src="toggleIcon ? '/public/more.png' : '/public/close.png'"
+          :src="toggleIcon ? '/more.png' : '/close.png'"
           alt="Öppna och stäng meny"
         />
       </button>
