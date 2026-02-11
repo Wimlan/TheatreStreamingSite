@@ -45,7 +45,6 @@ watch(search, (newValue) => {
       <div class="hamburger" v-if="showMenu">
         <ul>
           <li><RouterLink to="/">HEM</RouterLink></li>
-          <li><RouterLink to="/favorites">FAVORITER</RouterLink></li>
         </ul>
       </div>
     </div>

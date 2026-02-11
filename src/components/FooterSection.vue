@@ -61,5 +61,10 @@ export default {};
         >Arrow icons created by bqlqn - Flaticon</a
       >
     </li>
+    <li>
+      <a href="https://www.flaticon.com/free-icons/rating" title="rating icons"
+        >Rating icons created by Alla Afanasenko - Flaticon</a
+      >
+    </li>
   </ul>
 </template>

@@ -1,11 +1,13 @@
 <script>
 import DetailedPage from "../components/DetailedPage.vue";
 import Buttons from "../components/Buttons.vue";
+import VideoDetails from "../components/VideoDetails.vue";
 
 export default {
   components: {
     DetailedPage,
     Buttons,
+    VideoDetails,
   },
   data() {
     return {
@@ -28,7 +30,7 @@ export default {
 </script>
 
 <template>
-  <section id="show_page">
+  <article id="show_page">
     <RouterLink to="/">
       <img
         class="back_icon"
@@ -54,6 +56,8 @@ export default {
       <Buttons @click="openVideo" type-of-button="play" />
       <Buttons @click="openVideo" type-of-button="trailer" />
     </div>
-    <DetailedPage></DetailedPage>
-  </section>
+
+    <DetailedPage />
+  </article>
+  <VideoDetails @clicked="openVideo" />
 </template>

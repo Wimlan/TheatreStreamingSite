@@ -3,6 +3,46 @@
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
+@font-face {
+  font-family: "Lateef";
+  src: url(/fonts/Lateef-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lateef";
+  src: url(/fonts/Lateef-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lateef";
+  src: url(/fonts/Lateef-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: light;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(/fonts/OpenSans-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(/fonts/OpenSans-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
 $redDark: #6f1e37;
 $redMedium: #c92233;
 $blueDark: #000022;
@@ -65,7 +105,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+  font-family: "Open Sans";
 }
 
 p,
@@ -78,7 +118,9 @@ h6 {
   overflow-wrap: break-word;
 }
 
-p {
+p,
+li {
+  font-family: "Open Sans";
   text-wrap: pretty;
 }
 h1,
@@ -87,6 +129,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: "Lateef";
   text-wrap: balance;
 }
 
@@ -100,11 +143,11 @@ a {
 }
 
 main {
-  width: 80%;
-  margin: 5em auto;
+  margin: auto;
 }
 button {
   @include button;
+  font-weight: 700;
 }
 
 .play_button {
@@ -240,6 +283,17 @@ nav {
   color: $yellowAlmond;
   text-align: center;
   margin: 1em 0;
+  font-weight: 400;
+  font-size: 3em;
+}
+
+#search_result {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5em 0 3em 0;
 }
 
 //MAINBANNER
@@ -256,17 +310,33 @@ nav {
     text-align: center;
     z-index: 100;
     top: 60%;
-    right: 26%;
+    right: 30%;
     padding: 2em;
+    h2 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2em;
+      text-transform: capitalize;
+    }
   }
 }
 
 //THEATRELIST
 #show_article {
+  width: 80%;
+  margin: 7em auto;
+
   h2 {
     color: $yellowAlmond;
     margin: 1em 0 0.2em 0;
     text-transform: uppercase;
+  }
+}
+
+.show_list {
+  h2 {
+    font-size: 2em;
+    font-weight: 400;
   }
 }
 
@@ -278,6 +348,7 @@ nav {
 
   ul {
     max-width: 295px;
+    min-width: 295px;
     height: 430px;
     background-color: $yellowAlmond;
     padding: 0;
@@ -314,10 +385,13 @@ nav {
         top: 47%;
         margin-left: 1.5em;
         h3 {
-          width: 70%;
+          width: 75%;
+          font-weight: 400;
+          font-size: 1.3em;
+          line-height: 1.2em;
         }
         p {
-          font-size: 15px;
+          font-size: 0.85em;
           width: 80%;
           margin: 1em 0;
         }
@@ -343,7 +417,6 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 5em 10em;
-  margin-top: 2em;
   a {
     color: $yellowAlmond;
     text-decoration: underline;
@@ -357,8 +430,19 @@ footer {
 }
 
 //DETAILED VIEW
+#show_page {
+  width: 80%;
+  margin: auto;
+
+  .button_container {
+    justify-content: left;
+    margin-left: 7em;
+    margin-bottom: 2em;
+  }
+}
+
 .back_icon {
-  margin-top: 6em;
+  margin: 6em 0 1em 0;
 }
 
 #detailed_info {
@@ -379,33 +463,64 @@ footer {
   .flex_container {
     display: flex;
     justify-content: center;
-    align-items: top;
+    align-items: center;
     gap: 5em;
-    margin: 2em 0;
+    padding: 2em 0 5em 0;
   }
 
   .show_description {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 1em;
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      font-weight: 700;
+    }
+
+    h3 {
+      font-weight: 400;
+      font-size: 1.8em;
+    }
   }
 
   .production_members {
-    height: 400px;
+    height: 500px;
     max-width: 300px;
     border: solid 1px $yellowAlmond;
     ul {
-      padding: 3em;
+      padding: 1em 3em;
       list-style: none;
+      li {
+        margin-top: 1em;
+        font-weight: 400;
+        font-size: 0.8em;
+      }
     }
+  }
+  h3 {
+    margin-top: 1em;
+  }
+}
+
+#recensioner {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 2em;
+  ul {
+    list-style: none;
+    padding: 0;
   }
 }
 
 //VIDEO
-
-.button_container {
-  justify-content: left;
-  margin-left: 7em;
-  margin-bottom: 2em;
-}
 
 #video_section {
   position: fixed;
@@ -420,9 +535,44 @@ footer {
   align-items: center;
 
   box-shadow: inset 100vw 490px rgba(0, 0, 34, 0.897);
+
   img {
     display: block;
     margin: 0 5em 0 auto;
     cursor: pointer;
   }
+}
+
+//VIDEO DETAILS
+
+#video_details {
+  width: 100vw;
+  background-color: $blueMedium;
+  color: $yellowAlmond;
+  padding: 2em 0 3em 0;
+  h2 {
+    width: 80%;
+    margin: 1em auto 0 auto;
+    font-weight: 400;
+    font-size: 2.5em;
+  }
+}
+
+.video_part {
+  width: 80%;
+  margin: auto;
+  padding: 2em;
+  display: flex;
+  justify-content: left;
+  gap: 2em;
+  cursor: pointer;
+
+  h3 {
+    font-weight: 300;
+    font-size: 2em;
+  }
+}
+
+.video_part:hover {
+  background-color: $blueMediumLight;
 }

@@ -2,6 +2,46 @@
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
+@font-face {
+  font-family: "Lateef";
+  src: url(/fonts/Lateef-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lateef";
+  src: url(/fonts/Lateef-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lateef";
+  src: url(/fonts/Lateef-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: light;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(/fonts/OpenSans-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(/fonts/OpenSans-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -38,7 +78,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+  font-family: "Open Sans";
 }
 
 p,
@@ -51,7 +91,9 @@ h6 {
   overflow-wrap: break-word;
 }
 
-p {
+p,
+li {
+  font-family: "Open Sans";
   text-wrap: pretty;
 }
 
@@ -61,6 +103,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: "Lateef";
   text-wrap: balance;
 }
 
@@ -74,8 +117,7 @@ a {
 }
 
 main {
-  width: 80%;
-  margin: 5em auto;
+  margin: auto;
 }
 
 button {
@@ -98,6 +140,7 @@ button {
   font-size: 0.8em;
   border-radius: 5px;
   padding: 0.7em 1.2em;
+  font-weight: 700;
   font-weight: 700;
 }
 
@@ -264,6 +307,26 @@ nav {
   color: #f8e7d7;
   text-align: center;
   margin: 1em 0;
+  font-weight: 400;
+  font-size: 3em;
+}
+
+#search_result {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5em 0 3em 0;
 }
 
 #main_banner {
@@ -282,14 +345,31 @@ nav {
   text-align: center;
   z-index: 100;
   top: 60%;
-  right: 26%;
+  right: 30%;
   padding: 2em;
+}
+
+#main_banner .title_box h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 2em;
+  text-transform: capitalize;
+}
+
+#show_article {
+  width: 80%;
+  margin: 7em auto;
 }
 
 #show_article h2 {
   color: #f8e7d7;
   margin: 1em 0 0.2em 0;
   text-transform: uppercase;
+}
+
+.show_list h2 {
+  font-size: 2em;
+  font-weight: 400;
 }
 
 .show_genresection {
@@ -304,6 +384,7 @@ nav {
 
 .show_genresection ul {
   max-width: 295px;
+  min-width: 295px;
   height: 430px;
   background-color: #f8e7d7;
   padding: 0;
@@ -357,11 +438,14 @@ nav {
 }
 
 .show_genresection ul a .description h3 {
-  width: 70%;
+  width: 75%;
+  font-weight: 400;
+  font-size: 1.3em;
+  line-height: 1.2em;
 }
 
 .show_genresection ul a .description p {
-  font-size: 15px;
+  font-size: 0.85em;
   width: 80%;
   margin: 1em 0;
 }
@@ -391,7 +475,6 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   padding: 5em 10em;
-  margin-top: 2em;
 }
 
 footer a {
@@ -403,8 +486,21 @@ footer a {
   margin-left: 5em;
 }
 
+#show_page {
+  width: 80%;
+  margin: auto;
+}
+
+#show_page .button_container {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  margin-left: 7em;
+  margin-bottom: 2em;
+}
+
 .back_icon {
-  margin-top: 6em;
+  margin: 6em 0 1em 0;
 }
 
 #detailed_info {
@@ -430,34 +526,79 @@ footer a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: top;
-      -ms-flex-align: top;
-          align-items: top;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 5em;
-  margin: 2em 0;
+  padding: 2em 0 5em 0;
 }
 
 #detailed_info .show_description {
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  gap: 1em;
+}
+
+#detailed_info .show_description h1 {
+  font-weight: 700;
+  font-size: 2.5em;
+}
+
+#detailed_info .show_description h2 {
+  font-weight: 700;
+}
+
+#detailed_info .show_description h3 {
+  font-weight: 400;
+  font-size: 1.8em;
 }
 
 #detailed_info .production_members {
-  height: 400px;
+  height: 500px;
   max-width: 300px;
   border: solid 1px #f8e7d7;
 }
 
 #detailed_info .production_members ul {
-  padding: 3em;
+  padding: 1em 3em;
   list-style: none;
 }
 
-.button_container {
+#detailed_info .production_members ul li {
+  margin-top: 1em;
+  font-weight: 400;
+  font-size: 0.8em;
+}
+
+#detailed_info h3 {
+  margin-top: 1em;
+}
+
+#recensioner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
-  margin-left: 7em;
-  margin-bottom: 2em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2em;
+}
+
+#recensioner ul {
+  list-style: none;
+  padding: 0;
 }
 
 #video_section {
@@ -489,5 +630,42 @@ footer a {
   display: block;
   margin: 0 5em 0 auto;
   cursor: pointer;
+}
+
+#video_details {
+  width: 100vw;
+  background-color: #131330;
+  color: #f8e7d7;
+  padding: 2em 0 3em 0;
+}
+
+#video_details h2 {
+  width: 80%;
+  margin: 1em auto 0 auto;
+  font-weight: 400;
+  font-size: 2.5em;
+}
+
+.video_part {
+  width: 80%;
+  margin: auto;
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  gap: 2em;
+  cursor: pointer;
+}
+
+.video_part h3 {
+  font-weight: 300;
+  font-size: 2em;
+}
+
+.video_part:hover {
+  background-color: #302c44;
 }
 /*# sourceMappingURL=index.css.map */

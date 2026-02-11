@@ -5,7 +5,14 @@ import Buttons from "./Buttons.vue";
 export default {
   components: { Buttons },
   data() {
-    return { showId: "", show: null };
+    return {
+      showId: "",
+      show: null,
+      stars: "/fivestars.png",
+      review: "En föreställning värd att se!",
+      reviewer: "GP",
+      i: [1, 2, 3],
+    };
   },
   watch: {
     "$route.params.showId": { handler: "fetchShow", immediate: true },
@@ -64,7 +71,18 @@ export default {
           consectetur nulla. Vel dolor eget sit adipiscing imperdiet. Sem
           euismod purus egestas lacus sit.
         </p>
+        <h3>Recensioner</h3>
+        <div id="recensioner">
+          <ul v-for="n in 3">
+            <li>
+              <img width="100px" :src="stars" alt="" />
+            </li>
+            <li>{{ review }}</li>
+            <li>{{ reviewer }}</li>
+          </ul>
+        </div>
       </div>
+
       <div class="production_members">
         <ul>
           <li>Regissör: Namn</li>
