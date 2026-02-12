@@ -84,7 +84,7 @@ export default {
     </p>
     <div v-else class="show_genresection">
       <ul v-for="show in displayedShows" :key="show.id">
-        <RouterLink :to="`show/${show.id}`">
+        <RouterLink id="to_show" :to="`show/${show.id}`">
           <li class="show_image">
             <img
               width="250"

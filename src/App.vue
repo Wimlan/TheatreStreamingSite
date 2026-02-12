@@ -1,9 +1,3 @@
-<!-- Att göra:
-*I theathrelist.vue:
--Gör props för hur många kort jag vill visa
--styla korten
--->
-
 <script>
 import "/assets/style/index.css";
 import HeaderNavigation from "./components/HeaderNavigation.vue";

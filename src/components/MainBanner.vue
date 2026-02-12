@@ -51,7 +51,9 @@ export default {
   <p class="loading" v-if="error">{{ error }}</p>
   <section id="main_banner">
     <div class="title_box">
-      <h2>{{ showName }}</h2>
+      <RouterLink :to="`show/${showId}`">
+        <h2>{{ showName }}</h2>
+      </RouterLink>
       <div class="button_container">
         <RouterLink :to="`show/${showId}`">
           <Buttons type-of-button="play" />
@@ -59,12 +61,6 @@ export default {
         <Buttons type-of-button="favorite" />
       </div>
     </div>
-    <img
-      width="1200px"
-      height="700px"
-      id="main_image"
-      :src="showUrl"
-      alt="show image"
-    />
+    <img id="main_image" :src="showUrl" alt="show image" />
   </section>
 </template>

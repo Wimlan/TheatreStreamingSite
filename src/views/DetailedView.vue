@@ -53,7 +53,7 @@ export default {
     </section>
 
     <div class="button_container">
-      <Buttons @click="openVideo" type-of-button="play" />
+      <Buttons id="play_show" @click="openVideo" type-of-button="play" />
       <Buttons @click="openVideo" type-of-button="trailer" />
     </div>
 

@@ -39,7 +39,12 @@ export default {
     <section class="acts">
       <h2>Delar</h2>
       <div @click="onVideoClick" v-for="act in acts" class="video_part">
-        <img width="200px" :src="act.thumbnail" alt="" />
+        <img
+          class="video_thumbnail"
+          width="200px"
+          :src="act.thumbnail"
+          alt=""
+        />
         <div>
           <h3>{{ act.title }}</h3>
           <p>{{ act.length }}</p>
@@ -49,7 +54,12 @@ export default {
     <section class="extra">
       <h2>Extramaterial</h2>
       <div @click="onVideoClick" v-for="extra in extras" class="video_part">
-        <img width="200px" :src="extra.thumbnail" alt="" />
+        <img
+          class="video_thumbnail"
+          width="200px"
+          :src="extra.thumbnail"
+          alt=""
+        />
         <div>
           <h3>{{ extra.title }}</h3>
           <p>{{ extra.length }}</p>

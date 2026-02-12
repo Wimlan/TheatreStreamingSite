@@ -1,8 +1,7 @@
 <script setup>
-import { computed, ref, watch, defineEmits } from "vue";
-import axios from "axios";
+import { ref, watch, defineEmits } from "vue";
 
-const props = defineProps(["search"]);
+const props = defineProps({ search: { type: String } });
 const emits = defineEmits(["update:search"]);
 
 const showMenu = ref(false);
@@ -30,7 +29,13 @@ watch(search, (newValue) => {
 
     <div id="navbar">
       <div>
-        <input v-model="search" type="text" name="search" placeholder="SÖK" />
+        <input
+          id="search"
+          v-model="search"
+          type="text"
+          name="search"
+          placeholder="SÖK"
+        />
       </div>
 
       <button @click="toggleMenu">

@@ -336,6 +336,10 @@ nav {
 
 #main_banner #main_image {
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: block;
 }
 
 #main_banner .title_box {
@@ -344,9 +348,15 @@ nav {
   position: absolute;
   text-align: center;
   z-index: 100;
-  top: 60%;
-  right: 30%;
   padding: 2em;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 90%;
 }
 
 #main_banner .title_box h2 {
@@ -357,7 +367,7 @@ nav {
 }
 
 #show_article {
-  width: 80%;
+  width: 85%;
   margin: 7em auto;
 }
 
@@ -376,15 +386,17 @@ nav {
   gap: 1em;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: auto;
-      grid-template-rows: auto;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
 }
 
 .show_genresection ul {
-  max-width: 295px;
-  min-width: 295px;
+  min-width: 290px;
+  max-width: 300px;
   height: 430px;
   background-color: #f8e7d7;
   padding: 0;
@@ -667,5 +679,157 @@ footer a {
 
 .video_part:hover {
   background-color: #302c44;
+}
+
+@media (max-width: 1400px) {
+  #show_article {
+    width: 95%;
+  }
+  #detailed_info .bookmark {
+    margin-right: 5em;
+  }
+}
+
+@media (max-width: 1250px) {
+  #show_article {
+    width: 90%;
+    margin: 4em auto;
+  }
+  #show_article h2 {
+    padding-left: 24px;
+    margin-bottom: 0.5em;
+  }
+  #show_article .show_genresection {
+    grid-auto-flow: column;
+    overflow-x: auto;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+    padding-bottom: 1.5em;
+    padding-left: 16em;
+  }
+  #show_article ul {
+    min-width: 290px;
+    max-width: 300px;
+    width: 100%;
+    scroll-snap-align: start;
+  }
+  #search_result .show_genresection {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  footer {
+    gap: 10em;
+  }
+  footer li {
+    font-size: 0.7em;
+  }
+  #show_page .button_container {
+    margin-left: 0em;
+  }
+  .banner {
+    height: auto;
+  }
+  #detailed_info .bookmark {
+    margin-right: 0em;
+  }
+}
+
+@media (max-width: 1060px) {
+  #show_article .show_genresection {
+    padding-left: 46em;
+    padding-right: 61em;
+  }
+  footer {
+    gap: 2em;
+  }
+  #search_result .show_genresection {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 790px) {
+  #main_image {
+    height: 450px !important;
+  }
+  #show_article {
+    width: 100%;
+    margin: 3em auto 3em auto;
+  }
+  #show_article .show_genresection ul:last-child {
+    margin-right: 16em;
+  }
+  footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+  footer #adress_section div {
+    margin: 0;
+  }
+  #main_banner .title_box {
+    top: 20%;
+    left: 30%;
+  }
+  #main_banner .title_box h2 {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+  #main_banner .title_box .button_container {
+    display: none;
+  }
+  #search_result .show_genresection {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  #site_intro {
+    display: none;
+  }
+  #detailed_info .flex_container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #detailed_info .show_description {
+    width: 100%;
+  }
+  #detailed_info .production_members {
+    width: auto;
+    height: auto;
+  }
+}
+
+@media (max-width: 540px) {
+  #main_image {
+    height: 350px !important;
+  }
+  #show_article .show_genresection {
+    padding-left: 56em;
+  }
+  #show_article .show_genresection ul:last-child {
+    margin-right: 36em;
+  }
+  #main_banner .title_box {
+    top: 30%;
+    left: 35%;
+    width: 100%;
+  }
+  #main_banner .title_box h2 {
+    font-size: 1.7em;
+  }
+  .video_part {
+    width: 100%;
+    padding: 2em 1em;
+  }
+  .video_part .video_thumbnail {
+    width: 150px;
+    height: 100px;
+  }
+  .video_part h3 {
+    font-size: 1.7em;
+  }
 }
 /*# sourceMappingURL=index.css.map */
