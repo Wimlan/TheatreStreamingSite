@@ -38,7 +38,12 @@ export default {
   <article id="video_details">
     <section class="acts">
       <h2>Delar</h2>
-      <div @click="onVideoClick" v-for="act in acts" class="video_part">
+      <div
+        @click="onVideoClick"
+        :key="act.title"
+        v-for="act in acts"
+        class="video_part"
+      >
         <img
           class="video_thumbnail"
           width="200px"
@@ -53,7 +58,12 @@ export default {
     </section>
     <section class="extra">
       <h2>Extramaterial</h2>
-      <div @click="onVideoClick" v-for="extra in extras" class="video_part">
+      <div
+        @click="onVideoClick"
+        :key="extra.title"
+        v-for="extra in extras"
+        class="video_part"
+      >
         <img
           class="video_thumbnail"
           width="200px"
