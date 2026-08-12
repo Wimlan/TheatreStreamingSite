@@ -299,7 +299,8 @@ nav {
 //MAINBANNER
 #main_banner {
   position: relative;
-  margin: 1em 0;
+  margin: 0 0 3em 0;
+  width: 75%;
   #main_image {
     width: 100%;
     height: fit-content;
@@ -332,7 +333,10 @@ nav {
 #show_article {
   width: 85%;
   margin: 7em auto;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   h2 {
     color: $yellowAlmond;
     margin: 1em 0 0.2em 0;
