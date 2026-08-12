@@ -6,66 +6,60 @@ export default {
     return {
       shows: [],
       error: null,
-      addedShow: [],
-      keyword: this.sortByKeyword,
+      debouncedSearch: null,
     };
   },
   computed: {
     displayedShows() {
-      if (this.searchQuery.trim() === "") {
-        return this.shows.slice(0, this.slicedNumber);
-      } else {
-        return this.shows.filter((show) =>
-          show.name
-            .toLowerCase()
-            .includes(this.searchQuery.toLowerCase().trim()),
-        );
-      }
+      return this.shows.slice(0, this.slicedNumber);
     },
   },
   created() {
-    this.getShows();
+    this.debouncedSearch = this.debounce(this.searchShows, 300);
+    this.loadShows();
+  },
+  watch: {
+    sortByKeyword() {
+      this.loadShows();
+    },
+    searchQuery() {
+      this.debouncedSearch();
+    },
   },
   methods: {
-    async getShows() {
+    debounce(fn, delay) {
+      let timeoutId;
+      return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn.apply(this, args), delay);
+      };
+    },
+
+    async fetchShows(params) {
       try {
         this.error = null;
-
-        const response = await axios.get("/tm-api/discovery/v2/events.json", {
-          params: {
-            apikey: import.meta.env.VITE_TM_API_KEY,
-            segmentName: "Arts & Theatre",
-            keyword: this.keyword,
-            countryCode: "SE",
-            size: 200,
-            includeDescription: "yes",
-          },
-        });
-
-        const allShows = response.data._embedded?.events || [];
-
-        if (!allShows) {
-          setTimeout(() => {
-            this.getShows();
-          }, 2000);
-          return;
-        }
-
-        //filtrerar shower genom att jämföra namn och sen index
-        const filteredShows = allShows.filter(
-          (show, index, self) =>
-            index === self.findIndex((s) => s.name === show.name),
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/shows`,
+          { params },
         );
 
-        //Randomiserar showerna
-        this.shows = filteredShows.sort(() => Math.random() - 0.5);
-        console.log(this.shows);
+        const allShows = response.data || [];
+        this.shows = allShows.sort(() => Math.random() - 0.5);
       } catch (err) {
         this.error = "Kunde inte hittas. Försöker igen...";
-        setTimeout(() => {
-          this.getShows();
-        }, 2000);
+        setTimeout(() => this.fetchShows(params), 2000);
       }
+    },
+
+    loadShows() {
+      this.fetchShows({ genre: this.sortByKeyword || undefined });
+    },
+
+    searchShows() {
+      this.fetchShows({
+        genre: this.sortByKeyword || undefined,
+        title: this.searchQuery.trim() || undefined,
+      });
     },
   },
   props: {
@@ -86,12 +80,7 @@ export default {
       <ul v-for="show in displayedShows" :key="show.id">
         <RouterLink id="to_show" :to="`show/${show.id}`">
           <li class="show_image">
-            <img
-              width="250"
-              height="150"
-              :src="show.images[0].url"
-              alt="show image"
-            />
+            <img width="250" height="150" :src="show.image" alt="show image" />
           </li>
           <li class="play_icon">
             <img width="40px" src="/play.png" alt="play ikon" />
@@ -100,11 +89,9 @@ export default {
             <img width="40px" src="/play(blue).png" alt="play ikon" />
           </li>
           <li class="description">
-            <h3>{{ show.name }}</h3>
+            <h3>{{ show.title }}</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-              labore et non, incidunt praesentium amet, aperiam reprehenderit
-              accusamus omnis fugiat.
+              {{ show.subHeading }}
             </p>
           </li>
         </RouterLink>
