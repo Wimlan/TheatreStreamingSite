@@ -1,13 +1,16 @@
 <script>
 import axios from "axios";
 import Buttons from "./Buttons.vue";
+import LoadingIndicator from "./LoadingIndicator.vue";
 
 export default {
-  components: { Buttons },
+  components: { Buttons, LoadingIndicator },
   data() {
     return {
       showId: "",
       show: null,
+      isLoading: false,
+      error: null,
       stars: "/fivestars.png",
       review: "En föreställning värd att se!",
       reviewer: "GP",
@@ -20,66 +23,81 @@ export default {
   methods: {
     async fetchShow() {
       this.show = null;
+      this.error = null;
       this.showId = this.$route.params.showId;
       if (!this.showId) {
+        this.error = "Föreställningen kunde inte hittas.";
         return;
       }
-      const response = await axios.get("/tm-api/discovery/v2/events.json", {
-        params: {
-          apikey: import.meta.env.VITE_TM_API_KEY,
-          id: this.showId,
-        },
-      });
+      this.isLoading = true;
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/shows/${this.showId}`,
+        );
 
-      this.show = response.data._embedded?.events[0] || [];
+        this.show = data;
+        if (!this.show) {
+          this.error = "Föreställningen kunde inte hittas.";
+        }
+      } catch (err) {
+        this.error = "Kunde inte läsa in föreställningen. Försök igen senare.";
+      } finally {
+        this.isLoading = false;
+      }
     },
   },
 };
 </script>
 
 <template>
+  <slot v-if="show && !isLoading && !error" name="actions" />
   <section id="detailed_info" v-if="show">
     <img
       class="banner"
       width="1000px"
       height="550px"
-      :src="show.images[10]?.url"
+      :src="show.image"
       alt=""
     />
-    <Buttons type-of-button="bookmark" class="bookmark" />
+    <div class="detail_bookmark">
+      <Buttons type-of-button="bookmark" class="bookmark" />
+    </div>
 
     <div class="flex_container">
       <div class="show_description">
-        <h1>{{ show?.name }}</h1>
-        <h2>{{ show._embedded.venues[0]?.city.name }}</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Leo vitae vestibulum purus
-          pretium tristique. Purus massa viverra vulputate nulla et amet etiam
-          consectetur nulla. Vel dolor eget sit adipiscing imperdiet. Sem
-          euismod purus egestas lacus sit. Lorem ipsum dolor sit amet
-          consectetur. Leo vitae vestibulum purus pretium tristique. Purus massa
-          viverra vulputate nulla et amet etiam consectetur nulla. Vel dolor
-          eget sit adipiscing imperdiet. Sem euismod purus egestas lacus sit.
-          Lorem ipsum dolor sit amet consectetur.
-        </p>
-        <p>
-          Leo vitae vestibulum purus pretium tristique. Purus massa viverra
-          vulputate nulla et amet etiam consectetur nulla. Vel dolor eget sit
-          adipiscing imperdiet. Sem euismod purus egestas lacus sit. Lorem ipsum
-          dolor sit amet consectetur. Leo vitae vestibulum purus pretium
-          tristique. Purus massa viverra vulputate nulla et amet etiam
-          consectetur nulla. Vel dolor eget sit adipiscing imperdiet. Sem
-          euismod purus egestas lacus sit.
-        </p>
-        <h3>Recensioner</h3>
-        <div id="recensioner">
-          <ul v-for="n in 3">
-            <li>
-              <img width="100px" :src="stars" alt="" />
-            </li>
-            <li>{{ review }}</li>
-            <li>{{ reviewer }}</li>
-          </ul>
+        <div class="detail_heading">
+          <h1>{{ show.title }}</h1>
+          <h2>
+            {{ show.venue
+            }}<span class="detail_year" v-if="show.yearPublished">
+              - {{ show.yearPublished }}</span
+            >
+          </h2>
+        </div>
+        <div class="detail_copy">
+          <p>
+            {{ show.subHeading }}
+          </p>
+          <p>
+            {{ show.description }}
+          </p>
+        </div>
+        <div class="detail_reviews">
+          <h3 id="reviews_heading">Recensioner</h3>
+          <div
+            id="recensioner"
+            role="region"
+            aria-labelledby="reviews_heading"
+            tabindex="0"
+          >
+            <ul v-for="n in 3" :key="n">
+              <li>
+                <img width="100px" :src="stars" alt="" />
+              </li>
+              <li>{{ review }}</li>
+              <li>- {{ reviewer }}</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -96,5 +114,6 @@ export default {
       </div>
     </div>
   </section>
-  <div class="loading" v-else><p>Läser in detaljer...</p></div>
+  <p class="loading" v-else-if="error" role="alert">{{ error }}</p>
+  <LoadingIndicator v-else-if="isLoading" text="Läser in detaljer..." />
 </template>

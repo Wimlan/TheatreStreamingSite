@@ -4,11 +4,15 @@ export default {
     return {
       imgWidth: "18px",
       favorited: false,
+      favoriteClickCount: 0,
     };
   },
   methods: {
     addToFavorite() {
       this.favorited = !this.favorited;
+      if (this.typeOfButton === "favorite") {
+        this.favoriteClickCount += 1;
+      }
       console.log(this.favorited);
     },
   },
@@ -36,8 +40,11 @@ export default {
     @click="addToFavorite"
     class="favorite_button"
     type="button"
+    :aria-pressed="favorited"
   >
     <img
+      :key="favoriteClickCount"
+      :class="{ favorite_click: favoriteClickCount > 0 }"
       :width="imgWidth"
       :src="favorited ? '/star(marked).png' : '/star.png'"
       alt=""

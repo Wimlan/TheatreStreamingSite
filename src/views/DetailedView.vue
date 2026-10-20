@@ -52,12 +52,14 @@ export default {
       </video>
     </section>
 
-    <div class="button_container">
-      <Buttons id="play_show" @click="openVideo" type-of-button="play" />
-      <Buttons @click="openVideo" type-of-button="trailer" />
-    </div>
-
-    <DetailedPage />
+    <DetailedPage>
+      <template #actions>
+        <div class="button_container">
+          <Buttons id="play_show" @click="openVideo" type-of-button="play" />
+          <Buttons @click="openVideo" type-of-button="trailer" />
+        </div>
+      </template>
+    </DetailedPage>
   </article>
   <VideoDetails @clicked="openVideo" />
 </template>

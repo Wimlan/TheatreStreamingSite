@@ -1,16 +1,19 @@
 <script>
 import axios from "axios";
 import Buttons from "./Buttons.vue";
+import LoadingIndicator from "./LoadingIndicator.vue";
 
 export default {
   components: {
     Buttons,
+    LoadingIndicator,
   },
   data() {
     return {
       showId: "6",
       show: [],
       error: null,
+      isLoading: true,
     };
   },
   created() {
@@ -18,6 +21,8 @@ export default {
   },
   methods: {
     async fetchMainShow() {
+      this.isLoading = true;
+      this.error = null;
       try {
         if (!this.showId) {
           return;
@@ -42,6 +47,8 @@ export default {
         setTimeout(() => {
           this.fetchMainShow();
         }, 2000);
+      } finally {
+        this.isLoading = false;
       }
     },
   },
@@ -49,8 +56,9 @@ export default {
 </script>
 
 <template>
-  <p class="loading" v-if="error">{{ error }}</p>
-  <section id="main_banner">
+  <p class="loading" v-if="error" role="alert">{{ error }}</p>
+  <LoadingIndicator v-else-if="isLoading" />
+  <section id="main_banner" v-else>
     <div class="title_box">
       <RouterLink :to="`show/${showId}`">
         <h2>{{ show.title }}</h2>
