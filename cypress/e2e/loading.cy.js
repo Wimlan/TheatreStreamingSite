@@ -45,10 +45,12 @@ describe("Backend loading indicators", () => {
     cy.visit("http://localhost:5173/#/show/6");
     cy.get(".loading_indicator[role='status']").should("contain.text", "Läser in detaljer...");
     cy.get("#show_page > .button_container").should("not.exist");
+    cy.get("#video_details").should("not.exist");
     cy.wait("@details");
     cy.get("[role='alert']").should("contain.text", "Kunde inte läsa in föreställningen.");
     cy.get(".loading_indicator").should("not.exist");
     cy.get("#show_page > .button_container").should("not.exist");
+    cy.get("#video_details").should("not.exist");
   });
 
   it("Only shows the detail action buttons after the show finishes loading", () => {
@@ -63,12 +65,15 @@ describe("Backend loading indicators", () => {
     cy.visit("http://localhost:5173/#/show/6");
     cy.get(".loading_indicator[role='status']").should("be.visible");
     cy.get("#show_page > .button_container").should("not.exist");
+    cy.get("#video_details").should("not.exist");
     cy.wait("@details");
     cy.get(".loading_indicator").should("not.exist");
     cy.get("#detailed_info .banner").should("have.attr", "src", show.image);
     cy.get("#detailed_info").should("contain.text", "Test theatre");
     cy.get("#play_show").should("be.visible");
     cy.get("#show_page .trailer_button").should("be.visible");
+    cy.get("#video_details").should("be.visible");
+    cy.get("@details.all").should("have.length", 1);
     cy.get("#play_show").click();
     cy.get("#video_section").should("be.visible");
   });
