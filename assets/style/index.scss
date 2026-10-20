@@ -544,7 +544,7 @@ footer {
 }
 
 .back_icon {
-  margin: 6em 0 1em 0;
+  margin: 4em 0 1em 0;
 }
 
 #detailed_info {
@@ -812,14 +812,35 @@ footer {
   }
 }
 
-@media (max-width: 790px) {
+@media (max-width: 1060px) {
   #video_details {
+    padding: 1em 0 1.5em;
+
     > section {
       width: 100%;
     }
 
     h2 {
       padding-inline: 20px;
+      margin-top: 0.5em;
+    }
+  }
+
+  .video_part {
+    width: 100%;
+    padding: 1em;
+
+    .video_thumbnail {
+      width: 150px;
+      height: 100px;
+    }
+
+    h3 {
+      font-size: 1.5em;
+    }
+
+    p {
+      font-size: 0.875rem;
     }
   }
 
@@ -846,11 +867,12 @@ footer {
       grid-row: 4;
       margin: 16px 0;
       gap: 12px;
+      flex-wrap: nowrap;
 
       button {
         margin-top: 0;
         min-width: 0;
-        flex: 1;
+        flex: 0 1 130px;
       }
     }
   }
@@ -863,7 +885,9 @@ footer {
       height: auto;
     }
   }
+}
 
+@media (max-width: 790px) {
   #main_banner #main_image {
     height: 450px;
   }
@@ -929,7 +953,9 @@ footer {
   #site_intro {
     display: none;
   }
+}
 
+@media (max-width: 1060px) {
   #detailed_info {
     display: contents;
 
@@ -1041,33 +1067,43 @@ footer {
   }
 }
 
-@media (max-width: 540px) {
-  #video_details {
-    padding: 1em 0 1.5em;
+@media (min-width: 541px) and (max-width: 1060px) {
+  #detailed_info {
+    .detail_copy,
+    .production_members,
+    .detail_reviews {
+      width: 80%;
+      max-width: 640px;
+      justify-self: center;
+    }
 
-    h2 {
-      margin-top: 0.5em;
+    .detail_reviews {
+      margin-inline: 0;
     }
   }
 
+  #detailed_info,
+  #video_details {
+    text-align: center;
+  }
+
+  #detailed_info .detail_heading {
+    grid-column: 1 / -1;
+    padding-inline: 62px;
+  }
+
+  #show_page > .button_container,
+  #video_details .video_part {
+    justify-content: center;
+  }
+
+  #recensioner {
+    text-align: left;
+  }
+}
+
+@media (max-width: 540px) {
   #main_banner #main_image {
     height: 350px;
-  }
-  .video_part {
-    width: 100%;
-    padding: 1em;
-
-    .video_thumbnail {
-      width: 150px;
-      height: 100px;
-    }
-
-    h3 {
-      font-size: 1.5em;
-    }
-
-    p {
-      font-size: 0.875rem;
-    }
   }
 }
