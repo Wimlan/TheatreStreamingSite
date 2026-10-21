@@ -20,7 +20,11 @@ export default {};
     <li>
       Designed by
       <a target="_blank" href="https://wilmayasuda.se/">Wilma Yasuda</a> and
-      <a target="_blank" href="https://wilmayasuda.se/">Johanna Samnegård</a>
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/in/johanna-samnegård-218637129?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+        >Johanna Samnegård</a
+      >
     </li>
     <li>
       Website created by

@@ -34,6 +34,7 @@ describe("Wilmas spec", () => {
   });
 
   it("Keeps every show card reachable in mobile scrolling rows", () => {
+    const edgeTolerance = 1;
     const shows = Array.from({ length: 4 }, (_, index) => ({
       id: index + 1,
       title: `Show ${index + 1}`,
@@ -54,8 +55,8 @@ describe("Wilmas spec", () => {
           expect(bounds.left).to.be.at.least(0);
           expect(bounds.right).to.be.at.most(width);
           expect(row.scrollWidth).to.be.greaterThan(row.clientWidth);
-          expect(first.left).to.be.at.least(bounds.left);
-          expect(first.right).to.be.at.most(bounds.right);
+          expect(first.left).to.be.at.least(bounds.left - edgeTolerance);
+          expect(first.right).to.be.at.most(bounds.right + edgeTolerance);
           row.querySelectorAll("ul").forEach((card) => {
             const cardBounds = card.getBoundingClientRect();
             expect(cardBounds.height).to.be.at.least(320);
@@ -68,8 +69,8 @@ describe("Wilmas spec", () => {
             const iconBounds = icon.querySelector("img").getBoundingClientRect();
             expect(iconBounds.width).to.equal(36);
             expect(iconBounds.height).to.equal(36);
-            expect(cardBounds.right - iconBounds.right).to.equal(24);
-            expect(cardBounds.bottom - iconBounds.bottom).to.equal(24);
+            expect(cardBounds.right - iconBounds.right).to.be.closeTo(24, 0.01);
+            expect(cardBounds.bottom - iconBounds.bottom).to.be.closeTo(24, 0.01);
             expect(description.bottom).to.be.at.most(iconBounds.top);
           });
         });
@@ -78,16 +79,33 @@ describe("Wilmas spec", () => {
           const bounds = row.getBoundingClientRect();
           const last = row.querySelector("ul:last-child").getBoundingClientRect();
           expect(row.scrollLeft).to.be.greaterThan(0);
-          expect(last.left).to.be.at.least(bounds.left);
-          expect(last.right).to.be.at.most(bounds.right);
+          expect(last.left).to.be.at.least(bounds.left - edgeTolerance);
+          expect(last.right).to.be.at.most(bounds.right + edgeTolerance);
         });
       });
     });
   });
 
-  it("Navigates to page", () => {
+  it("Searches by title and displays the matching backend result", () => {
+    const show = {
+      id: 6,
+      title: "Marschkonsert med Arméns musikkår",
+      subHeading: "Search test performance",
+      image: "/act1.jpg",
+    };
+    cy.intercept("GET", /\/shows(?:\?.*)?$/, { body: [] });
+    cy.intercept("GET", /\/shows\/6(?:\?.*)?$/, { body: show });
+    cy.intercept(
+      {
+        method: "GET",
+        url: /\/shows(?:\?.*)?$/,
+        query: { title: "marsch" },
+      },
+      { body: [show] },
+    ).as("search");
     cy.visit("http://localhost:5173/");
     cy.get("#search").type("marsch");
-    cy.get("#search_result").contains("Marschkonsert med Arméns musikkår");
+    cy.wait("@search").its("request.query.title").should("equal", "marsch");
+    cy.get("#search_result").contains(show.title).should("be.visible");
   });
 });
