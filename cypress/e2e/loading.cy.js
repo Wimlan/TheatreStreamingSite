@@ -13,7 +13,7 @@ describe("Backend loading indicators", () => {
     cy.intercept("GET", bannerUrl, { delay: 1500, body: show }).as("banner");
     cy.visit("http://localhost:5173/");
     cy.get(".loading_indicator[role='status']").should("have.length", 5);
-    cy.get(".loading_indicator").first().should("contain.text", "Läser in");
+    cy.get(".loading_indicator").first().should("contain.text", "Loading");
     cy.get(".loading_spinner").first().should("have.attr", "aria-hidden", "true");
     cy.wait(["@shows", "@shows", "@shows", "@shows", "@banner"]);
     cy.get(".loading_indicator").should("not.exist");
@@ -25,7 +25,7 @@ describe("Backend loading indicators", () => {
     cy.intercept("GET", listUrl, { body: [] });
     cy.intercept("GET", bannerUrl, { body: show });
     cy.visit("http://localhost:5173/");
-    cy.contains("Inga föreställningar hittades.").should("be.visible");
+    cy.contains("No shows found.").should("be.visible");
     cy.get(".loading_indicator").should("not.exist");
   });
 
@@ -43,11 +43,11 @@ describe("Backend loading indicators", () => {
       statusCode: 500,
     }).as("details");
     cy.visit("http://localhost:5173/#/show/6");
-    cy.get(".loading_indicator[role='status']").should("contain.text", "Läser in detaljer...");
+    cy.get(".loading_indicator[role='status']").should("contain.text", "Loading details...");
     cy.get("#show_page > .button_container").should("not.exist");
     cy.get("#video_details").should("not.exist");
     cy.wait("@details");
-    cy.get("[role='alert']").should("contain.text", "Kunde inte läsa in föreställningen.");
+    cy.get("[role='alert']").should("contain.text", "Could not load the show.");
     cy.get(".loading_indicator").should("not.exist");
     cy.get("#show_page > .button_container").should("not.exist");
     cy.get("#video_details").should("not.exist");

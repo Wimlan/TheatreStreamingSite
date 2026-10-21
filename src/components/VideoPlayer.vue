@@ -13,7 +13,7 @@ export default {
       width="25px"
       @click="$emit('close')"
       src="/close.png"
-      alt="stäng videofönster"
+      alt="Close video window"
     />
     <video width="1000" height="550" controls>
       <source :src="src" type="video/mp4" />

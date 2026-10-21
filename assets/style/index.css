@@ -122,6 +122,9 @@ button {
   align-items: center;
   margin-top: 1em;
   font: inherit;
+  font-family: "Open Sans";
+  line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
   outline: inherit;
   font-size: 0.8em;
@@ -129,6 +132,15 @@ button {
   padding: 0.7em 1.2em;
   font-weight: 700;
   font-weight: 700;
+}
+
+.play_button img,
+.trailer_button img,
+.favorite_button img {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 .play_button {
@@ -238,6 +250,9 @@ header input[name=search] {
   padding: 0px 35px;
   transition: 0.3s;
 }
+header input[name=search]::placeholder {
+  font-size: 0.875em;
+}
 header input[name=search]:focus {
   outline: none;
   box-shadow: 0 0 0 3px #e79a3d;
@@ -256,6 +271,9 @@ nav {
 #navbar {
   display: flex;
   align-items: center;
+}
+#navbar .search_toggle {
+  display: none;
 }
 #navbar button {
   min-width: fit-content;
@@ -783,6 +801,37 @@ footer a {
   }
 }
 @media (max-width: 790px) {
+  #navbar {
+    gap: 16px;
+  }
+  #navbar .search_toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+  }
+  #navbar .search_toggle .search_icon {
+    width: 30px;
+    height: 30px;
+    background-color: #f8e7d7;
+    mask: url("/search.png") center/contain no-repeat;
+  }
+  #search_panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 12px 24px;
+    background-color: #6f1e37;
+  }
+  #search_panel.search_open {
+    display: block;
+  }
+  #search_panel input[name=search] {
+    width: 100%;
+  }
   #main_banner #main_image {
     height: 450px;
   }

@@ -7,7 +7,7 @@ export default createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      //Behöver lägga till specifik product
+      // Need to add a specific product
       component: DetailedView,
       path: "/show/:showId",
     },

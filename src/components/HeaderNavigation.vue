@@ -1,14 +1,40 @@
 <script setup>
-import { ref, watch, defineEmits } from "vue";
+import { computed, nextTick, ref, watch, defineEmits } from "vue";
+import { useRoute } from "vue-router";
 
-const props = defineProps({ search: { type: String } });
+const props = defineProps({ search: { type: String, default: "" } });
 const emits = defineEmits(["update:search"]);
+const route = useRoute();
 
 const showMenu = ref(false);
 const toggleIcon = ref(true);
-const search = ref("");
+const search = computed({
+  get: () => props.search,
+  set: (value) => emits("update:search", value),
+});
+const searchOpen = ref(false);
+const searchInput = ref(null);
+const searchToggle = ref(null);
+
+async function toggleSearch() {
+  searchOpen.value = !searchOpen.value;
+  if (searchOpen.value) {
+    showMenu.value = false;
+    toggleIcon.value = true;
+    await nextTick();
+    searchInput.value.focus();
+  }
+}
+
+function closeSearch() {
+  if (searchOpen.value) {
+    searchOpen.value = false;
+    searchToggle.value.focus();
+  }
+}
 
 function toggleMenu() {
+  searchOpen.value = false;
   showMenu.value = !showMenu.value;
 
   if (showMenu.value === true) {
@@ -18,23 +44,43 @@ function toggleMenu() {
   }
 }
 
-watch(search, (newValue) => {
-  emits("update:search", newValue);
-});
+watch(
+  () => route.params.showId,
+  (showId) => {
+    if (showId) {
+      search.value = "";
+      searchOpen.value = false;
+    }
+  },
+);
 </script>
 
 <template>
   <nav>
-    <img width="150px" src="/teaterbiblioteket-logo.png" alt="logo" />
+    <img width="150px" src="/TheTheatreLibrary.png" alt="logo" />
 
     <div id="navbar">
-      <div>
+      <button
+        ref="searchToggle"
+        class="search_toggle"
+        type="button"
+        :aria-label="searchOpen ? 'Close search' : 'Open search'"
+        :aria-expanded="searchOpen"
+        aria-controls="search_panel"
+        @click="toggleSearch"
+      >
+        <span class="search_icon" aria-hidden="true"></span>
+      </button>
+      <div id="search_panel" :class="{ search_open: searchOpen }">
         <input
           id="search"
+          ref="searchInput"
           v-model="search"
           type="text"
           name="search"
-          placeholder="SÖK"
+          aria-label="Search shows"
+          placeholder="search for a show"
+          @keydown.esc="closeSearch"
         />
       </div>
 
@@ -42,14 +88,14 @@ watch(search, (newValue) => {
         <img
           height="30"
           :src="toggleIcon ? '/more.png' : '/close.png'"
-          alt="Öppna och stäng meny"
+          alt="Open and close menu"
         />
       </button>
-      <!-- <img height="30" src="" alt="Stäng meny" @click="toggleMenu" v-else /> -->
+      <!-- <img height="30" src="" alt="Close menu" @click="toggleMenu" v-else /> -->
 
       <div class="hamburger" v-if="showMenu">
         <ul>
-          <li><RouterLink to="/">HEM</RouterLink></li>
+          <li><RouterLink to="/">HOME</RouterLink></li>
         </ul>
       </div>
     </div>

@@ -7,17 +7,17 @@ export default {
     return {
       acts: [
         {
-          title: "Akt 1 - Innan allt hände",
+          title: "Act 1 - Before it all happened",
           length: "46 min",
         },
         {
-          title: "Akt 2 - Efter allt hände",
+          title: "Act 2 - After it all happened",
           length: "48 min",
         },
       ],
       extras: [
         {
-          title: "Intervju med regissör",
+          title: "Interview with the director",
           length: "4 min",
         },
       ],
@@ -34,7 +34,7 @@ export default {
 <template>
   <article id="video_details">
     <section class="acts">
-      <h2>Delar</h2>
+      <h2>Parts</h2>
       <div
         @click="onVideoClick"
         :key="act.title"
@@ -49,7 +49,7 @@ export default {
       </div>
     </section>
     <section class="extra">
-      <h2>Extramaterial</h2>
+      <h2>Extras</h2>
       <div
         @click="onVideoClick"
         :key="extra.title"

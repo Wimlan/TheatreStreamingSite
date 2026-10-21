@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       stars: "/fivestars.png",
-      review: "En föreställning värd att se!",
+      review: "A performance worth seeing!",
       reviewer: "GP",
       i: [1, 2, 3],
     };
@@ -51,7 +51,7 @@ export default {
           </p>
         </div>
         <div class="detail_reviews">
-          <h3 id="reviews_heading">Recensioner</h3>
+          <h3 id="reviews_heading">Reviews</h3>
           <div
             id="recensioner"
             role="region"
@@ -71,13 +71,9 @@ export default {
 
       <div class="production_members">
         <ul>
-          <li>Regissör: Namn</li>
-          <li>Skådespelare: Namn Namn Namn Namn Namn Namn</li>
-          <li>Ljud & Ljus: Namn Namn</li>
-          <li>Scenograf: Namn</li>
-          <li>Rekvisita: Namn Namn</li>
-          <li>Kostym: Namn Namn Namn</li>
-          <li>Maskör: Namn Namn</li>
+          <li v-for="member in show.productionMembers" :key="member.id">
+            {{ member.title }}: {{ member.name }}
+          </li>
         </ul>
       </div>
     </div>

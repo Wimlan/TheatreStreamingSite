@@ -7,8 +7,8 @@ export default {};
     <img width="200px" src="/teaterbiblioteket-logo.png" alt="" />
     <div>
       <p>
-        LÅTSASGATAN 12 <br />
-        142 56 GÖTEBORG
+        PRETEND STREET 12 <br />
+        142 56 GOTHENBURG
       </p>
       <p>070-03 39 67 **</p>
       <p>info@teaterbiblioteket.se</p>
@@ -16,10 +16,14 @@ export default {};
   </section>
 
   <ul>
-    <h3>Licenser:</h3>
-    <li>Prototyp designad av Wilma Yasuda och Johanna Samnegård</li>
+    <h3>Licenses:</h3>
     <li>
-      Hemsida skapad av
+      Designed by
+      <a target="_blank" href="https://wilmayasuda.se/">Wilma Yasuda</a> and
+      <a target="_blank" href="https://wilmayasuda.se/">Johanna Samnegård</a>
+    </li>
+    <li>
+      Website created by
       <a target="_blank" href="https://wilmayasuda.se/">Wilma Yasuda</a>
     </li>
     <li>

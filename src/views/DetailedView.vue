@@ -31,7 +31,7 @@ export default {
       this.error = null;
       const showId = this.$route.params.showId;
       if (!showId) {
-        this.error = "Föreställningen kunde inte hittas.";
+        this.error = "The show could not be found.";
         return;
       }
       this.isLoading = true;
@@ -42,10 +42,10 @@ export default {
 
         this.show = data;
         if (!this.show) {
-          this.error = "Föreställningen kunde inte hittas.";
+          this.error = "The show could not be found.";
         }
       } catch (err) {
-        this.error = "Kunde inte läsa in föreställningen. Försök igen senare.";
+        this.error = "Could not load the show. Please try again later.";
       } finally {
         this.isLoading = false;
       }
@@ -71,7 +71,7 @@ export default {
         class="back_icon"
         width="50px"
         src="/left-arrow.png"
-        alt="Tillbaka till förstasidan"
+        alt="Back to the homepage"
     /></RouterLink>
 
     <VideoPlayer
@@ -81,7 +81,7 @@ export default {
     />
 
     <p class="loading" v-if="error" role="alert">{{ error }}</p>
-    <LoadingIndicator v-else-if="isLoading" text="Läser in detaljer..." />
+    <LoadingIndicator v-else-if="isLoading" text="Loading details..." />
     <DetailedPage v-else-if="show" :show="show">
       <template #actions>
         <div class="button_container">

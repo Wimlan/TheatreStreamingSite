@@ -43,7 +43,7 @@ export default {
 
         this.error = null;
       } catch (err) {
-        this.error = "Föreställning kunde inte hittas. Försöker igen...";
+        this.error = "Show could not be found. Retrying...";
         setTimeout(() => {
           this.fetchMainShow();
         }, 2000);

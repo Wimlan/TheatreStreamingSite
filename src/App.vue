@@ -10,6 +10,13 @@ export default {
       globalSearch: "",
     };
   },
+  watch: {
+    async globalSearch(value) {
+      if (value.trim() && this.$route.path !== "/") {
+        await this.$router.push("/");
+      }
+    },
+  },
 };
 </script>
 
@@ -18,7 +25,14 @@ export default {
     <HeaderNavigation v-model:search="globalSearch" />
   </header>
 
-  <main><RouterView :globalSearch="globalSearch" /></main>
+  <main>
+    <RouterView v-slot="{ Component, route }">
+      <component
+        :is="Component"
+        v-bind="route.path === '/' ? { globalSearch } : {}"
+      />
+    </RouterView>
+  </main>
 
   <footer><FooterSection /></footer>
 </template>

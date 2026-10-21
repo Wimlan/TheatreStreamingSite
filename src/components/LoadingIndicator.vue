@@ -1,7 +1,7 @@
 <script>
 export default {
   props: {
-    text: { type: String, default: "Läser in..." },
+    text: { type: String, default: "Loading..." },
   },
 };
 </script>

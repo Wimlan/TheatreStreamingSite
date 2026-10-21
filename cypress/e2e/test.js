@@ -9,14 +9,14 @@ Before(() => {
   cy.visit("http://localhost:5173/");
 });
 
-Given("Jag går in på en föreställnings detaljsida", () => {
+Given("I open a show's details page", () => {
   cy.get("#to_show").click();
 });
 
-When("Jag klickar på knappen SPELA UPP", () => {
+When("I click the PLAY button", () => {
   cy.get("#play_show").click();
 });
 
-Then("Ett fönster med en video visas", () => {
+Then("A window with a video is displayed", () => {
   cy.get("#video_section").should("be.visible");
 });
